@@ -1,0 +1,63 @@
+BASICS:
+Centralized VCS: Have a single server that contains all the versioned files, and the number of clients that check out files
+from that central place.
+
+	e.g. CVS, Perforce, Subversion.
+
+	Disadv:
+		Centralized server as single point failure.
+
+
+Distributed VCS: Clients just don't check out the latest snapshots of the files: they fully mirror the repository.
+	Every checkout is really a full backup of all the data.
+
+	e.g. Mercurial, Git, Bazaar, Darcs.
+
+We can commit to git even when offline.
+
+Git Has Integrity: Everything in git is check-summed before it is stored and is then referred to by that checksum. This means it's impossible to change the contents of any file or directory without git knowing about it. This functionality is built into Git at lowest levels and is integral to its philosophy.
+
+
+Git uses SHA-1 hash for checksumming. 
+	40 character string composed of hex chars(0-9 & a-f).
+	calculated based on contents of file or dir str.
+
+THE THREE STATES:
+	COMMITED: Data is safely stored  in your local database.
+	MODIFIED: You have changed the file but haven't commited to the database yet.
+	STAGED:   You have marked a modified file in its current version to go into your next commit snapshot.
+
+MODIFY -> STAGE -> COMMIT
+
+Install Git
+
+First Time Setup:
+	git config:
+		/etc/gitconfig : --system level configuration(all users and repos on the system)
+		~/.gitconfig   : --global. specific to one user.
+		.git/config    : of particular repo. specific to single repo.
+		**Each level overrides values in previous level, so values in .git/config trump those in /etc/gitconfig.**
+
+	Your Identiry:
+		$git config --global user.name "John Doe"
+		$git config --global user.email "johndoe@example.com"
+		To do this only once!
+
+	Your Editor:
+		$git config --global core.editor vim
+
+	Your Diff Tool:
+		To resolve merge conflicts.
+		$git config --global merge.tool vimdiff
+
+	Check Settings:
+		$git config --list
+		**in case of multiple keys, Git uses last value for each unique key it sees.**
+		$git config user.name [$git config {key}]
+
+	Getting Help:
+		$git help <verb>
+		$git <verb> --help
+		$man git-<verb>
+
+<----------------END OF CHAP1-------------------->
