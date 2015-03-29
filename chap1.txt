@@ -1,3 +1,6 @@
+													
+														CHAP1
+														
 BASICS:
 Centralized VCS: Have a single server that contains all the versioned files, and the number of clients that check out files
 from that central place.
